@@ -65,4 +65,4 @@
 
 12. 当用户进入主界面之后，点击界面右上方的x按钮并不会退出软件，而只是最小化到系统托盘。如果用户想真正退出程序，应该通过右键系统托盘选择退出项进行退出。
 
-<img src="C:\Users\Ken-Chy\AppData\Roaming\Typora\typora-user-images\image-20230608014609622.png" alt="image-20230608014609622" style="zoom:67%;" />
+<img src="https://cdn.ken-chy129.cn//picgo/202306080241124.png" alt="image-20230608014609622" style="zoom:67%;" />
