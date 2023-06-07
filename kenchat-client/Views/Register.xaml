@@ -1,0 +1,124 @@
+﻿<views:BaseWindow x:Class="KenChat.Views.Register"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:views="clr-namespace:KenChat.Views"
+                  mc:Ignorable="d"
+                  Icon="../Images/logo.png"
+                  Title="注册" Height="510" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+                  WindowStyle="None" MouseDown="MoveWindow" FontFamily="Segoe UI Emoji" AllowsTransparency="True"
+                  Background="Transparent">
+
+    <views:BaseWindow.Effect>
+        <DropShadowEffect BlurRadius="10" Color="#999" Direction="300" ShadowDepth="2" />
+    </views:BaseWindow.Effect>
+
+    <Grid>
+        <!-- 上面部分 -->
+        <Border CornerRadius="5" Margin="10,5,10,5" Height="280" VerticalAlignment="Top">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" />
+                    <GradientStop Color="#FF8AF2C8" Offset="1" />
+                    <GradientStop Color="#FF64F6BB" Offset="0.546" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <!-- 下面部分 -->
+        <Border CornerRadius="5" Height=" 230" VerticalAlignment="Bottom">
+            <Border.Background>
+                <SolidColorBrush Color="Snow" />
+            </Border.Background>
+        </Border>
+
+        <!-- 头像框 -->
+        <Border ToolTip="上传头像" CornerRadius="30" BorderBrush="#FF2281D1" BorderThickness="2"
+                Width="100" Height="100" VerticalAlignment="Top" Margin="30, 30, 30, 30"
+                MouseLeftButtonDown="UploadAvatar">
+            <Grid>
+                <Image x:Name="Avatar" Width="95" Height="95" Visibility="Collapsed" Stretch="UniformToFill">
+                    <Image.Clip>
+                        <RectangleGeometry RadiusX="30" RadiusY="30" Rect="0,0,95,95" />
+                    </Image.Clip>
+                </Image>
+                <TextBlock x:Name="Plus" Text="+" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" Visibility="Visible" Foreground="#FF2281D1" />
+            </Grid>
+        </Border>
+
+        <!-- 注册矩形框 -->
+        <Rectangle Width="280" Height="270" VerticalAlignment="Bottom" Margin="0,80" RadiusY="10" RadiusX="10"
+                   Fill="White">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1"
+                                  Color="#FFBBBBBB" />
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <!-- 注册信息 -->
+        <Grid VerticalAlignment="Bottom" Margin="35,80" Height="270">
+            <Label Content="用户注册" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Black"
+                   FontSize="18" />
+            <StackPanel VerticalAlignment="Center" Margin="20">
+                <TextBox x:Name="Username" Margin="0,4" materialDesign:HintAssist.Hint="请输入用户名"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontFamily="Champagne &amp; Limousines" FontSize="16" />
+                <PasswordBox x:Name="Password" Margin="0,4" materialDesign:HintAssist.Hint="请输入密码"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                             FontFamily="Champagne &amp; Limousines" FontSize="16" />
+                <TextBox x:Name="Phone" Margin="0,4" materialDesign:HintAssist.Hint="请输入手机号码"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontFamily="Champagne &amp; Limousines" FontSize="16" />
+                <!-- 验证码部分 -->
+                <Grid Margin="0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="Code" Grid.Column="0" materialDesign:HintAssist.Hint="请输入验证码"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             FontFamily="Champagne &amp; Limousines" FontSize="16" />
+                    <Button x:Name="CodeButton" Grid.Column="1" Content="获取验证码" Margin="5,10,0,0" FontSize="16"
+                            Background="Transparent" Foreground="Gray" BorderThickness="0" VerticalAlignment="Top"
+                            Height="32"
+                            Click="GetCode" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <!-- 注册按钮 -->
+        <Button Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65"
+                Content="Register" Background="#FF5A79F4" Foreground="White" ToolTip="立即注册" Click="UserRegister">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <!-- 阴影特效 -->
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="8" Direction="0" RenderingBias="Quality" ShadowDepth="1"
+                                  Color="#FF5A79F4" />
+            </Button.Effect>
+        </Button>
+
+        <!-- 其他部分 -->
+        <Image Cursor="Hand" ToolTip="关闭" Source="../Images/close.png" Stretch="Fill" Height="20" Width="20"
+               UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"
+               HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,14,19,0"
+               MouseLeftButtonDown="Close" />
+
+        <Button Content="登录账号" HorizontalAlignment="Left" Margin="12,0,0,12"
+                VerticalAlignment="Bottom" BorderThickness="0" Background="Snow" Foreground="#FF7F7E7E"
+                FontFamily="Microsoft Yi Baiti" FontSize="14" FontWeight="Normal" Click="ChangeToLogin" />
+
+        <RadioButton HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,170,12" />
+        <Button Content="注册即接受应用服务协议" HorizontalAlignment="Right" Margin="0,0,12,12"
+                VerticalAlignment="Bottom" BorderThickness="0" Background="Snow" Foreground="#FF7F7E7E"
+                FontFamily="Microsoft Yi Baiti" FontSize="14" FontWeight="Normal" />
+    </Grid>
+</views:BaseWindow>

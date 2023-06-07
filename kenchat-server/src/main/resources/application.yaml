@@ -1,0 +1,28 @@
+thirdauth:
+  enabled: true
+  type:
+    GITEE:
+      client-id: xx
+      client-secret: xx
+      redirect-uri: xx
+    QQ:
+      client-id: xx
+      client-secret: xx
+      redirect-uri: xx
+  cache:
+    type: redis
+spring:
+  cache:
+    type: redis
+  redis:
+    host: xx
+    port: 6379
+    password: xx
+    database: 0
+    jedis:
+      pool: #?????
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+server:
+  port: 8889

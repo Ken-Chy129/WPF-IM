@@ -1,0 +1,97 @@
+﻿<views:BaseWindow x:Class="KenChat.Views.Login"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:views="clr-namespace:KenChat.Views"
+                    mc:Ignorable="d"
+                    Icon="../Images/logo.png"
+                    Title="登录" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
+                    Background="Transparent" Height="350" Width="460" MouseDown="MoveWindow" ResizeMode="NoResize">
+
+    <views:BaseWindow.Effect>
+        <DropShadowEffect BlurRadius="10" Color="#999" Direction="300" ShadowDepth="2" />
+    </views:BaseWindow.Effect>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border CornerRadius="5" Margin="10,5,10,5">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1" />
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FF28B17A" Offset="0.48" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border CornerRadius="5" Background="Snow" Margin="0,120,0,0" HorizontalAlignment="Right" Width="440" />
+        </Border>
+
+        <Label Content="勇者の圈子" FontSize="36" FontWeight="Bold" VerticalAlignment="Center"
+               HorizontalContentAlignment="Center" Foreground="#39c6dc" Margin="20,40,20,260"
+               HorizontalAlignment="Left" Width="420" FontFamily="Lobster" />
+
+        <Label Content="手机" Margin="98,150,92,155" FontSize="18" VerticalContentAlignment="Center" />
+        <Border CornerRadius="3" Background="#ddd" Margin="153,150,107,155" Height="40">
+            <TextBox Margin="1,0,1,0" FontSize="16" Padding="5,5,5,5" Name="UserAccount" VerticalAlignment="Center"
+                     VerticalContentAlignment="Center" Height="40" />
+        </Border>
+        <Label Content="密码" Margin="98,205,92,100" FontSize="18" VerticalContentAlignment="Center" />
+        <Border CornerRadius="3" Background="#ddd" Margin="153,205,107,100" Height="40">
+            <PasswordBox Margin="1,0,1,0" FontSize="16" Padding="5,5,5,5" Name="UserPassword"
+                         VerticalAlignment="Center" VerticalContentAlignment="Center" Height="40"
+                         PreviewKeyDown="LoginByKeyboard" />
+        </Border>
+        <Border CornerRadius="3" Background="#ddd" Margin="100,271,100,35">
+            <Button Foreground="White" Background="#FF94D0D6" BorderThickness="0"
+                    FontSize="18" Cursor="Hand" Content="登 录" Margin="1,0,1,0"
+                    Click="UserLogin" />
+        </Border>
+
+        <Image Cursor="Hand" Source="../Images/logo.png" Stretch="Fill" Height="50" Width="50"
+               UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,15,0,0" />
+
+        <Image Cursor="Hand" ToolTip="关闭" Source="../Images/close.png" Stretch="Fill" Height="22" Width="22"
+               UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"
+               HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,13,20,0"
+               MouseLeftButtonDown="Close" />
+
+        <Image Cursor="Hand" ToolTip="QQ登录" Source="../Images/QQ.png" Stretch="Fill" Height="30" Width="30"
+               UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"
+               HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,14,20,12"
+               MouseLeftButtonDown="QQ_Login" />
+
+        <Button Content="注册账号" HorizontalAlignment="Left" Margin="22,0,0,15"
+                VerticalAlignment="Bottom" BorderThickness="0" Background="Snow" Foreground="#FF7F7E7E"
+                FontFamily="Microsoft Yi Baiti" FontSize="14" FontWeight="Normal" Click="ChangeToRegister" />
+    </Grid>
+</views:BaseWindow>
